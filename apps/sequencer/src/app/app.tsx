@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Todo } from '@musique/data'
 import { Todos } from '@musique/ui';
+import { Todo } from '@musique/data'
+import { notes } from '@musique/audio'
 
 
 export const App = () => {
