@@ -1,26 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@musique/api-interfaces';
+import { useEffect, useState } from 'react';
+import { Todo } from '@musique/data'
+import { Todos } from '@musique/ui';
+
 
 export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
-    fetch('/api')
-      .then((r) => r.json())
-      .then(setMessage);
+    fetch('/api/todos')
+      .then((_) => _.json())
+      .then(setTodos);
   }, []);
+
+  const addTodo = () => {
+    fetch('/api/addTodo', {
+      method: 'POST',
+      body: '',
+    })
+      .then((_) => _.json())
+      .then((newTodo) => {
+        setTodos([...todos, newTodo]);
+      });
+  }
+
+  // const addPatternToSequence = () => {
+    // fetch('/api/pattern', {
+    //   method: 'POST',
+    //   body: '',
+    // })
+    //   .then((_) => _.json())
+    //   .then((newPattern) => {
+    //     setPatterns([...patterns, newPattern]);
+    //   });
+  // }
+
+  // const addSequenceToUserCollection = () => {
+    // fetch('/api/addSequence', {
+    //   method: 'POST',
+    //   body: '',
+    // })
+    //   .then((_) => _.json())
+    //   .then((newSequence) => {
+    //     setSequences([...sequences, newsequence]);
+    //   });
+  // }
 
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to sequencer!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-          alt="Nx - Smart, Fast and Extensible Build System"
-        />
-      </div>
-      <div>{m.message}</div>
+      <h1>Todos</h1>
+      <Todos todos={todos} />
+      <button id={'add-todo'} onClick={addTodo}>
+      Add Todo
+      </button>
+
     </>
   );
 };
