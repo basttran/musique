@@ -1,28 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Todos } from '@musique/ui';
-import { Todo } from '@musique/data'
-import { notes } from '@musique/audio'
+import { NotesList } from '@musique/ui'
 
 
 export const App = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  useEffect(() => {
-    fetch('/api/todos')
-      .then((_) => _.json())
-      .then(setTodos);
-  }, []);
-
-  const addTodo = () => {
-    fetch('/api/addTodo', {
-      method: 'POST',
-      body: '',
-    })
-      .then((_) => _.json())
-      .then((newTodo) => {
-        setTodos([...todos, newTodo]);
-      });
-  }
 
   // const addPatternToSequence = () => {
     // fetch('/api/pattern', {
@@ -48,11 +27,8 @@ export const App = () => {
 
   return (
     <>
-      <h1>Todos</h1>
-      <Todos todos={todos} />
-      <button id={'add-todo'} onClick={addTodo}>
-      Add Todo
-      </button>
+      <h1>Notes</h1>
+      <NotesList></NotesList>
 
     </>
   );
