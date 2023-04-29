@@ -1,4 +1,62 @@
+.lists {
+  display: flex;
+  flex-direction: row;
+}
+
 .note {
-  width: 36px;
+  width: 56px;
   color: chartreuse;
+  background-color: rebeccapurple;
+}
+
+.adjusted-note {
+  width: 56px;
+  background-color: chartreuse;
+  color: rebeccapurple;
+}
+
+.fretboard {
+  display: flex;
+  flex-direction: column;
+  background-color: burlywood;
+
+}
+
+.guitar-string {
+  display: flex;
+  padding: 0;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+  background-color: burlywood;
+
+}
+
+.fret {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  justify-content: center;
+  height: 4px;
+  background-color: gray;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.marker {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: white;
+  overflow: visible;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  display: inline;
+  overflow: visible;
 }

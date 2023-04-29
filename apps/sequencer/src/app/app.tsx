@@ -29,7 +29,6 @@ export const App = () => {
     <>
       <h1>Notes</h1>
       <NotesList></NotesList>
-
     </>
   );
 };

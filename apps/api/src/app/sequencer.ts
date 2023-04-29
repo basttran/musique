@@ -1,12 +1,12 @@
-// import { Express } from 'express';
+import { Express } from 'express';
+import { Note, getAllNotes } from '@musique/audio';
 
-// export function addTodoRoutes(app: Express) {
-//   app.get('/api/todos', (req, resp) => resp.send(todos));
-//   app.post('/api/addTodo', (req, resp) => {
-//     const newTodo = {
-//       title: `New todo ${Math.floor(Math.random() * 1000)}`,
-//     };
-//     todos.push(newTodo);
-//     resp.send(newTodo);
-//   });
-// }
+const notes: Note[] = getAllNotes();
+const sequence: Note[] = [];
+
+export function addNotesRoutes(app: Express) {
+  app.get('/api/notes', (req, resp) => resp.send(notes));
+  app.post('/api/addNotetoSequence', (req, resp) => {
+    const data = req.body;
+  });
+}
